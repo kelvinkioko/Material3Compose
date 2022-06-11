@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'org.jlleitschuh.gradle.ktlint' version '10.2.1'
 }
 
 android {
@@ -37,6 +40,13 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
+    }
+    ktlint {
+        disabledRules = ["no-wildcard-imports"]
+    }
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
     }
     packagingOptions {
         resources {
